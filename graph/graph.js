@@ -46,8 +46,18 @@ class Graph {
       this.nodes[fromNode].includes(toNode) &&
       this.nodes[toNode].includes(fromNode)
     ) {
-      this.nodes[fromNode][node.indexOf(toNode)] = "";
-      this.nodes[toNode][node.indexOf(fromNode)] = "";
+      this.nodes[fromNode].splice(node.indexOf(toNode), 1);
+      this.nodes[toNode].splice(node.indexOf(fromNode), 1);
     }
   }
 }
+
+const graph = new Graph();
+graph.addNode(100);
+graph.addNode(1);
+graph.addNode(10);
+graph.addEdge(1, 100);
+graph.addEdge(1, 10);
+console.log(graph);
+graph.removeEdge(1, 100);
+console.log(graph);
